@@ -65,4 +65,5 @@ $this->title = 'Angel_Rize';
             ],
         ],
     ]);?>
+    <a href="gii">Gii</a>
 </div>

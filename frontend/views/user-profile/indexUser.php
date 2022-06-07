@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="mt-3">
                                     <h4><?php echo $user->name; ?></h4>
                                     <p class="text-secondary mb-1"><?php echo $user->proffession; ?></p>
-                                    <p class="text-muted font-size-sm"><?php echo $user->address; ?></p>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +118,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php foreach ($comments as $comment){ ?>
                         <div class="card mt-3">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <li class="list-group-item justify-content-between align-items-center flex-wrap">
                                     <img src="../../uploads/<?php echo $user->image?>" alt="UserImg" class="rounded-circle" width="30">
                                     <span class="text-body"><?php echo $comment->body?></span>
                                 </li>
