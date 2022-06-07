@@ -34,11 +34,11 @@ AppAsset::register($this);
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
-    $menuItems = [
+    $menuItems[] = ['label' => 'DepDrop', 'items' => [
         ['label' => 'Студент', 'url' => ['/student']],
         ['label' => 'Группа', 'url' => ['/group']],
         ['label' => 'Оценка', 'url' => ['/ocenka']],
-    ];
+    ]];
     if(Yii::$app->user->getIdentity()->isAdmin()){
        $menuItems[] = ['label' => 'Админка', 'items' => [
            ['label' => 'Пользователи', 'url' => ['/user']],
