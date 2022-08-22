@@ -11,6 +11,14 @@
 Далее идут диаграммы базы данных:
 
 DepDrop(Backend)
+
+
 ![image](https://user-images.githubusercontent.com/74964601/185903247-0b274990-af56-40ad-b343-da0a3ab88ebd.png)
+
+
+
 User && Profile(Frontend) && CommentsToProfile(Frontend) && Chat(Backend)
+
+
+
 ![image](https://user-images.githubusercontent.com/74964601/185904198-387ece17-5006-4a79-81f8-a505aa6f9814.png)
