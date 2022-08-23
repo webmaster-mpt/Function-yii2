@@ -1,5 +1,7 @@
 <?php
 
+use backend\models\Ocenka;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -28,9 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'student_id',
-            'group_id',
+            [
+                'label' => 'Студент',
+                'attribute'=>'student.name',
+                'value'=> ArrayHelper::getValue($model,'student.name'),
+            ],
+            [
+                'label' => 'Группа',
+                'attribute'=>'group.label',
+                'value'=> ArrayHelper::getValue($model,'group.label'),
+            ],
             'grade',
             [
                 'class' => ActionColumn::className(),

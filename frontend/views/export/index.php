@@ -1,25 +1,24 @@
 <?php
 
-use backend\models\Student;
-use yii\helpers\ArrayHelper;
+use frontend\models\Export;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\StudentSearch */
+/* @var $searchModel frontend\models\ExportSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Students';
+$this->title = 'Exports';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="student-index">
+<div class="export-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Student', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Export', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -30,20 +29,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+            'id',
+            'fname:ntext',
             'name:ntext',
-            [
-                'label' => 'Группа',
-                'attribute'=>'group.label',
-                'value'=> ArrayHelper::getValue($model,'group.label'),
-            ],
+            'sname:ntext',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Student $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Export $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
         ],
     ]); ?>
-
 
 </div>

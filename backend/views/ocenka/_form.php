@@ -1,5 +1,6 @@
 <?php
 
+use kartik\depdrop\DepDrop;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
@@ -27,7 +28,7 @@ use yii\widgets\ActiveForm;
             'prompt' => ''
     ]) ?>
 
-    <?= $form->field($model, 'group_id')->widget(\kartik\depdrop\DepDrop::className(),[
+    <?= $form->field($model, 'group_id')->widget(DepDrop::className(),[
         'options' => ['id' => 'group_id'],
         'pluginOptions'=>[
             'depends'=>['student_id'],

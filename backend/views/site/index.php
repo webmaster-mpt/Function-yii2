@@ -11,9 +11,11 @@ $this->title = 'Angel_Rize';
 ?>
 <div class="site-index">
         <h4>Admin</h4>
-        <table class="table table-bordered">
+        <table class="table table-bordered" style="width: 40%">
             <thead>
-            <th>Пользователи</th>
+                <tr>
+                    <th>Пользователи</th>
+                </tr>
             </thead>
             <tbody>
             <tr>
@@ -65,5 +67,5 @@ $this->title = 'Angel_Rize';
             ],
         ],
     ]);?>
-    <a href="gii">Gii</a>
+    <a href="gii" class="btn btn-dark">Gii</a>
 </div>

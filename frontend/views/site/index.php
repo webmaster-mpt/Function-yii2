@@ -7,8 +7,10 @@ use yii\helpers\Url;
 
 $this->title = 'Angel_Rize';
 ?>
+
 <div class="site-index">
     <div>
-        <h1>User</h1>
+
+
     </div>
 </div>

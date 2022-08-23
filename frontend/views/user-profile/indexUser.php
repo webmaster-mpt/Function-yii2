@@ -11,6 +11,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <header>
     <link rel="stylesheet" href="/indexUser.css"">
+    <style>
+        .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl{
+            padding: 0;
+        }
+    </style>
 </header>
 <div class="user-profile-index">
     <?php if($userInfo == null) {?>

@@ -49,4 +49,22 @@ class Ocenka extends \yii\db\ActiveRecord
         $data = Group::find()->select(['id','label as name'])->where(['id'=>$student_id])->asArray()->all();
         return $data;
     }
+
+    /**
+     * Gets query for [[Student]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStudent() {
+        return $this->hasOne(Student::className(),['id' => 'student_id']);
+    }
+
+    /**
+     * Gets query for [[Group]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGroup() {
+        return $this->hasOne(Group::className(),['id' => 'group_id']);
+    }
 }

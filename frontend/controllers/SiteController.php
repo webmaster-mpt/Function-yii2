@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Export;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -84,6 +85,7 @@ class SiteController extends Controller
         ];
     }
 
+
     /**
      * Displays homepage.
      *
@@ -93,8 +95,11 @@ class SiteController extends Controller
     {
         if (!Yii::$app->user->isGuest) {
         }
+        $exports = Export::find()->all();
        
-        return $this->render('index');
+        return $this->render('index',[
+            'exports' => $exports
+        ]);
     }
 
     /**
@@ -115,7 +120,7 @@ class SiteController extends Controller
 
         $model->password = '';
 
-        return $this->render('login',  [
+        return $this->render('login', [
             'model' => $model
         ]);
     }

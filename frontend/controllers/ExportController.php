@@ -2,19 +2,16 @@
 
 namespace frontend\controllers;
 
-use Yii;
-use frontend\models\UserProfile;
-use frontend\models\Comments;
-use frontend\models\UserProfileSearch;
+use frontend\models\Export;
+use frontend\models\ExportSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile as WebUploadedFile;
 
 /**
- * UserProfileController implements the CRUD actions for UserProfile model.
+ * ExportController implements the CRUD actions for Export model.
  */
-class UserProfileController extends Controller
+class ExportController extends Controller
 {
     /**
      * @inheritDoc
@@ -35,12 +32,13 @@ class UserProfileController extends Controller
     }
 
     /**
-     * Lists all UserProfile models.
-     * @return mixed
+     * Lists all Export models.
+     *
+     * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new UserProfileSearch();
+        $searchModel = new ExportSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -50,30 +48,9 @@ class UserProfileController extends Controller
     }
 
     /**
-     * Lists all UserProfile models.
-     * @return mixed
-     */
-    public function actionIndexUser($user_id)
-    {
-        $model = new UserProfile();
-        $userId = \Yii::$app->user->identity->getId();
-        $userInfo = UserProfile::find()->where(['user_id' => $user_id])->all();
-        $comments = Comments::find()->where(['user_id' => $user_id])->all();
-        if($user_id != \Yii::$app->user->identity->getId()){
-            $this->redirect('/');
-        }
-        return $this->render('indexUser', [
-            'model' => $model,
-            'userId' => $userId,
-            'userInfo' => $userInfo,
-            'comments' => $comments
-        ]);
-    }
-
-    /**
-     * Displays a single UserProfile model.
+     * Displays a single Export model.
      * @param int $id ID
-     * @return mixed
+     * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -84,23 +61,20 @@ class UserProfileController extends Controller
     }
 
     /**
-     * Creates a new UserProfile model.
+     * Creates a new Export model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new UserProfile();
-        $file = WebUploadedFile::getInstance($model, 'image');
-        if ($model->load(\Yii::$app->request->post())) {
-            if ($file) {
-                $photoname= uniqid($model->name) . $file->baseName . '.' . $file->extension;
-                $file->saveAs(\Yii::getAlias('@frontend/web') . 'uploads/' . $photoname);
-                $model->image = $photoname;
-                if($model->save()){
-                    return $this->redirect(['/user-profile/index-user' . '?user_id='. Yii::$app->user->identity->getId()]);
-                }
+        $model = new Export();
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
             }
+        } else {
+            $model->loadDefaultValues();
         }
 
         return $this->render('create', [
@@ -109,18 +83,18 @@ class UserProfileController extends Controller
     }
 
     /**
-     * Updates an existing UserProfile model.
+     * Updates an existing Export model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
-     * @return mixed
+     * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $user_id = \Yii::$app->user->identity->getId();
+
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['index-user', 'user_id' => $user_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -129,10 +103,10 @@ class UserProfileController extends Controller
     }
 
     /**
-     * Deletes an existing UserProfile model.
+     * Deletes an existing Export model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
-     * @return mixed
+     * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
@@ -143,15 +117,15 @@ class UserProfileController extends Controller
     }
 
     /**
-     * Finds the UserProfile model based on its primary key value.
+     * Finds the Export model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return UserProfile the loaded model
+     * @return Export the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = UserProfile::findOne($id)) !== null) {
+        if (($model = Export::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

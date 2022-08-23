@@ -34,16 +34,19 @@ AppAsset::register($this);
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
-    $menuItems[] = ['label' => 'DepDrop', 'items' => [
-        ['label' => 'Студент', 'url' => ['/student']],
-        ['label' => 'Группа', 'url' => ['/group']],
-        ['label' => 'Оценка', 'url' => ['/ocenka']],
-    ]];
+
     if(Yii::$app->user->getIdentity()->isAdmin()){
        $menuItems[] = ['label' => 'Админка', 'items' => [
            ['label' => 'Пользователи', 'url' => ['/user']],
            ['label' => 'Абоба', 'url' => ['/aboba']],
         ]];
+        $menuItems[] = ['label' => 'DepDrop', 'items' => [
+            ['label' => 'Студент', 'url' => ['/student']],
+            ['label' => 'Группа', 'url' => ['/group']],
+            ['label' => 'Оценка', 'url' => ['/ocenka']],
+        ]];
+        $menuItems[] = ['label' => 'Чат', 'url' => ['/chat/my-chat','user_id' => Yii::$app->user->id]];
+
     }
     if(Yii::$app->user->getIdentity()->isModer()){
         $menuItems[] = ['label' => 'Модерка', 'items' => [
