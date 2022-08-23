@@ -10,6 +10,7 @@ use Yii;
  *
  * @property int $id
  * @property int|null $user_id
+ * @property int|null $chat_id
  * @property string|null $created_at
  * @property string $text
  *
@@ -31,10 +32,9 @@ class Chat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id'], 'integer'],
+            [['user_id','chat_id'], 'integer'],
             [['created_at'], 'safe'],
-            [['text'], 'required'],
-            [['text'], 'string'],
+            [['text'], 'string','min' => 1],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -47,6 +47,7 @@ class Chat extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
+            'chat_id' => 'Chat ID',
             'created_at' => 'Created At',
             'text' => 'Текст сообщения',
         ];
