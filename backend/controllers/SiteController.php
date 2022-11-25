@@ -79,13 +79,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $users = User::find()->where(['user.role'=>'1'])->all();
-        $user = Yii::$app->user->getIdentity();
+        $model = new User();
+        $users = $model->getUser();
         if (Yii::$app->user->getIdentity()->isModer()) {
-            return $this->redirect(['/user/index-moder', 'id' => $user]);
+            return $this->redirect(['/user/index-moder', 'id' => Yii::$app->user->getIdentity()]);
         }
         $abobaSearchModel = new AbobaSearch();
         $abobaDataProvider = $abobaSearchModel->search($this->request->queryParams);
+
         return $this->render('index', [
             'users'=>$users,
             'abobaSearchModel'=>$abobaSearchModel,

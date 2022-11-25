@@ -95,11 +95,12 @@ class SiteController extends Controller
     {
         if (!Yii::$app->user->isGuest) {
         }
-        $exports = Export::find()->all();
+//        $exports = Export::find()->all();
        
-        return $this->render('index',[
-            'exports' => $exports
-        ]);
+//        return $this->render('index',[
+//            'exports' => $exports
+//        ]);
+        return $this->render('index');
     }
 
     /**

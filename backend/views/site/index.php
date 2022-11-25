@@ -61,9 +61,9 @@ $this->title = 'Angel_Rize';
                 'value'=> ArrayHelper::getValue($abobaSearchModel,'date_birthday'),
             ],
             [
-                'label'=>'Недвижимость', 
-                'attribute'=>'realty.name', 
-                'value'=> ArrayHelper::getValue($abobaSearchModel,'realty.name'), 
+                'label'=>'Недвижимость',
+                'attribute'=>'realty.name',
+                'value'=> ArrayHelper::getValue($abobaSearchModel,'realty.name'),
             ],
         ],
     ]);?>
