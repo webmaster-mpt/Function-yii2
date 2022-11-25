@@ -67,12 +67,6 @@ class m211217_112146_create_aboba_table extends Migration
             'aboba'
         );
 
-        // drops index for column `author_id`
-        $this->dropIndex(
-            'idx-aboba-status_id',
-            'aboba'
-        );
-
         // drops foreign key for table `category`
         $this->dropForeignKey(
             'fk-aboba-realty_id',
@@ -84,7 +78,7 @@ class m211217_112146_create_aboba_table extends Migration
             'idx-aboba-realty_id',
             'aboba'
         );
-        $this->dropTable('{{%user}}');
+        $this->dropTable('{{%aboba}}');
     }
 
 }
