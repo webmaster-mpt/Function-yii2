@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use backend\models\Chat;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -232,21 +233,26 @@ class User extends ActiveRecord implements IdentityInterface
     public function getRoleName(int $id)
     {
         $list = self::roles();
-        return $list[$id] ?? null;
+        return isset($list[$id]) ? $list[$id] : null;
     }
 
     public function isAdmin()
     {
-        return ($this->role == self::ROLE_ADMIN);
+        return ($this->role_id == self::ROLE_ADMIN);
     }
 
     public function isModer()
     {
-        return ($this->role == self::ROLE_MODER);
+        return ($this->role_id == self::ROLE_MODER);
     }
 
     public function isUser()
     {
-        return ($this->role == self::ROLE_USER);
+        return ($this->role_id == self::ROLE_USER);
+    }
+
+    public function getUser(){
+        $query = User::find()->where(['role_id' => 1])->all();
+        return $query;
     }
 }

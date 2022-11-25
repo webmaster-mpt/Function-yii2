@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -7,18 +8,12 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Users';
+$this->title = 'Пользователь0';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -26,8 +21,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'username',
             'email:email',
-            'role',
-            'status',
+            [
+                'label' => 'Роль',
+                'attribute'=>'role.name',
+                'value'=> ArrayHelper::getValue($model,'role.name'),
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

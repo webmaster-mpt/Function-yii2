@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -22,8 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'username',
             'email:email',
-            'role',
-            'status',
+            [
+                'label' => 'Роль',
+                'attribute'=>'role.name',
+                'value'=> ArrayHelper::getValue($model,'role.name'),
+            ],
         ],
     ]); ?>
 </div>

@@ -8,9 +8,6 @@ use yii\widgets\ActiveForm;
 
 
 $this->title = 'Update User: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="user-update">
 
@@ -22,7 +19,7 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'role')->textInput() ?>
+    <?= $form->field($model, 'role_id')->dropDownList(\yii\helpers\ArrayHelper::map(\backend\models\Role::find()->all(),'id','name')) ?>
 
     <?= $form->field($model, 'status')->textInput(['values'=>10]) ?>
 

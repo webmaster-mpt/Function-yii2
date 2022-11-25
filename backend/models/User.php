@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use backend\models\Role;
+use backend\models\Student;
 use Yii;
 
 /**
@@ -13,7 +15,7 @@ use Yii;
  * @property string $password_hash
  * @property string|null $password_reset_token
  * @property string $email
- * @property int|null $role
+ * @property int|null $role_id
  * @property int $status
  * @property int $created_at
  * @property int $updated_at
@@ -36,7 +38,7 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
-            [['role', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['role_id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
@@ -52,16 +54,25 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
+            'username' => 'Пользователь',
             'auth_key' => 'Auth Key',
             'password_hash' => 'Password Hash',
             'password_reset_token' => 'Password Reset Token',
-            'email' => 'Email',
-            'role' => 'Role',
-            'status' => 'Status',
+            'email' => 'Почта',
+            'role_id' => 'Роль',
+            'status' => 'Статус',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'verification_token' => 'Verification Token',
         ];
+    }
+
+    /**
+     * Gets query for [[Student]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRole() {
+        return $this->hasOne(Role::className(),['id' => 'role_id']);
     }
 }
