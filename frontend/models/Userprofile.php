@@ -43,8 +43,9 @@ class Userprofile extends \yii\db\ActiveRecord
         return [
             [['user_id', 'age'], 'integer'],
             [['fname', 'name', 'phone', 'address', 'linkGithub', 'linkVk', 'linkInstagram', 'image'], 'required'],
+            [['linkGithub', 'linkVk', 'linkInstagram'], 'string'],
+            [['image'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
             [['dateOfBirth'], 'safe'],
-            [['linkGithub', 'linkVk', 'linkInstagram', 'image'], 'string'],
             [['fname', 'name', 'sname', 'address', 'proffession'], 'string', 'max' => 255],
             [['phone'], 'string', 'max' => 50],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],

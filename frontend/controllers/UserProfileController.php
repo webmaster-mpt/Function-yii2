@@ -91,15 +91,11 @@ class UserProfileController extends Controller
     public function actionCreate()
     {
         $model = new UserProfile();
-        $file = WebUploadedFile::getInstance($model, 'image');
         if ($model->load(\Yii::$app->request->post())) {
-            if ($file) {
-                $photoname= uniqid($model->name) . $file->baseName . '.' . $file->extension;
-                $file->saveAs(\Yii::getAlias('@frontend/web') . 'uploads/' . $photoname);
-                $model->image = $photoname;
-                if($model->save()){
-                    return $this->redirect(['/user-profile/index-user' . '?user_id='. Yii::$app->user->identity->getId()]);
-                }
+            $model->image = WebUploadedFile::getInstance($model, 'image');
+            if($model->save()){
+                $model->image->saveAs('uploads/' . $model->image->baseName . '.' . $model->image->extension);
+                return $this->redirect(['/user-profile/index-user' . '?user_id='. Yii::$app->user->id]);
             }
         }
 

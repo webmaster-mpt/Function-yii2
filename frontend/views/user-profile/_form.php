@@ -12,6 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
+    <?= $form->field($model, 'image')->fileInput()->label(false) ?>
+
     <?= $form->field($model, 'user_id')->hiddenInput(['value'=>Yii::$app->user->identity->getId()])->label(false) ?>
 
     <?= $form->field($model, 'fname')->textInput(['maxlength' => true]) ?>
@@ -20,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'age')->textInput() ?>
+    <?= $form->field($model, 'age')->input('number') ?>
 
     <?= $form->field($model, 'dateOfBirth')->textInput(['type'=>'date']) ?>
 
@@ -36,10 +38,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'proffession')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'image')->fileInput()->label(false) ?>
-
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

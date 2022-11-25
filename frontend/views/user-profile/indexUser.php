@@ -7,7 +7,6 @@ use yii\widgets\ActiveForm;
 /* @var $model frontend\models\UserProfile */
 
 $this->title = 'Профиль';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <header>
     <link rel="stylesheet" href="/indexUser.css"">
