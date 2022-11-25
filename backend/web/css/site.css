@@ -88,3 +88,6 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+body{ /* фон сайта */
+    background-color: #F4F4F4;
+}
