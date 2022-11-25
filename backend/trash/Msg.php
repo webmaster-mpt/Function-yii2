@@ -6,24 +6,24 @@ use common\models\User;
 use Yii;
 
 /**
- * This is the model class for table "chat".
+ * This is the model class for table "msg".
  *
  * @property int $id
+ * @property string|null $uniq_code
  * @property int|null $user_id
- * @property int|null $chat_id
- * @property string|null $created_at
- * @property string $text
+ * @property int|null $userGet_id
+ * @property string|null $text
  *
  * @property User $user
  */
-class Chat extends \yii\db\ActiveRecord
+class Msg extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'chat';
+        return 'msg';
     }
 
     /**
@@ -32,9 +32,8 @@ class Chat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id','chat_id'], 'integer'],
-            [['created_at'], 'safe'],
-            [['text'], 'string','min' => 1],
+            [['uniq_code','text'], 'string'],
+            [['user_id', 'userGet_id'], 'integer'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -46,9 +45,9 @@ class Chat extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'uniq_code' => 'Uniq Code',
             'user_id' => 'User ID',
-            'chat_id' => 'Chat ID',
-            'created_at' => 'Created At',
+            'userGet_id' => 'User Get ID',
             'text' => 'Текст сообщения',
         ];
     }
@@ -61,5 +60,15 @@ class Chat extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    public function getMsg($unique_code){
+        $query = Msg::find()->where(['uniq_code' => $unique_code])->all();
+        return $query;
+    }
+
+    public function getMsgLists($user_id){
+        $query = Msg::find()->where(['userGet_id' => $user_id])->all();
+        return $query;
     }
 }

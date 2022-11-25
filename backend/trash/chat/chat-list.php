@@ -21,16 +21,29 @@ $this->title = 'Мои чаты';
     }
 </style>
 <div class="chat-list_form">
+    <a href="../../web/index.php" target="_blank">Пользователи</a>
     <div class="container-from-chat">
-        <?php foreach ($chats as $chat){ ?>
+        <?php foreach ($chats as $chat){
+            if($chat->userGet_id == Yii::$app->user->id){
+            ?>
             <div class="chat-view">
                 <div class="user-data">
                     <span><?= $chat->user->username ?></span>
                 </div>
                 <div class="link">
-                    <a href="new-chat?chat_id=<?= $chat->chat_id ?>" target="_blank">Войти в чат</a>
+                    <a href="../../web/index.php" target="_blank">Войти в чат</a>
                 </div>
             </div>
+            <?php } else { ?>
+                <div class="chat-view">
+                    <div class="user-data">
+                        <span><?= $chat->userGet->username ?></span>
+                    </div>
+                    <div class="link">
+                        <a href="../../web/index.php" target="_blank">Войти в чат</a>
+                    </div>
+                </div>
+            <?php } ?>
         <?php } ?>
     </div>
 </div>

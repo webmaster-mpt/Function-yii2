@@ -5,23 +5,23 @@
 use yii\widgets\ActiveForm;
 $this->title = 'Чат';
 ?>
-<link rel="stylesheet" href="/chat.css">
+<link rel="stylesheet" href="../../web/index.php">
 <div class="chat">
-    <a href="user-list-to-chat" target="_blank">Пользователи(Beta)</a> <br>
-    <a href="chat-list?user_id=<?= Yii::$app->user->id ?>" target="_blank">Мои чаты(Beta)</a>
+    <a href="../../web/index.php" target="_blank">Пользователи(Beta)</a> <br>
+    <a href="../../web/index.php" target="_blank">Мои чаты(Beta)</a>
     <div class="chat__wrapper">
         <?php
         foreach ($findMsgs as $findMsg){?>
-            <?php if($findMsg->user_id == Yii::$app->user->id){ ?>
+            <?php if($findMsg->user_id == Yii::$app->user->id && $findMsg->text !== null){ ?>
                 <div class="head-green">
-                    <label id="name"><?= $findMsg->user->username ?></label>
+                    <label id="name"><?= $findMsg->user->username . ' ' .($findMsg->user_id) ?></label>
                 </div>
                 <div class="chat__message-green">
                     <div><?= $findMsg->text ?></div>
                 </div>
             <?php } else if($findMsg->text !== null) { ?>
                 <div class="head">
-                    <label id="name"><?= $findMsg->user->username ?></label>
+                    <label id="name"><?= $findMsg->user->username . ' ' .($findMsg->user_id) ?></label>
                 </div>
                 <div class="chat__message">
                     <div><?= ($findMsg->text) ?></div>
