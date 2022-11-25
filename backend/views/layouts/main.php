@@ -39,18 +39,23 @@ AppAsset::register($this);
        $menuItems[] = ['label' => 'Админка', 'items' => [
            ['label' => 'Пользователи', 'url' => ['/user']],
            ['label' => 'Абоба', 'url' => ['/aboba']],
-        ]];
+           ['label' => 'Realty', 'url' => ['/realty']],
+           ['label' => 'Status', 'url' => ['/status']],
+       ]];
         $menuItems[] = ['label' => 'DepDrop', 'items' => [
             ['label' => 'Студент', 'url' => ['/student']],
             ['label' => 'Группа', 'url' => ['/group']],
             ['label' => 'Оценка', 'url' => ['/ocenka']],
         ]];
-        $menuItems[] = ['label' => 'Чат', 'url' => ['/chat/my-chat','user_id' => Yii::$app->user->id]];
+//        $menuItems[] = ['label' => 'Чат', 'url' => ['/chat/my-chat','userGet_id' => Yii::$app->user->id]];
+//        $menuItems[] = ['label' => 'Msg', 'url' => ['/msg']];
+        $menuItems[] = ['label' => 'Поддержка', 'url' => ['/helper/index']];
 
     }
     if(Yii::$app->user->getIdentity()->isModer()){
         $menuItems[] = ['label' => 'Модерка', 'items' => [
             ['label' => 'Пользователи', 'url' => ['/user/index-moder']],
+//            ['label' => 'Поддержка', 'url' => ['/helper/user-list']]
         ]];
     }
     if (Yii::$app->user->isGuest) {
@@ -59,7 +64,7 @@ AppAsset::register($this);
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Logout (' . Yii::$app->user->identity->username .')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
