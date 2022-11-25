@@ -1,0 +1,130 @@
+.chat{
+    width: 100%;
+}
+.chat__message-admin {
+    min-width: 150px;
+    min-height: 45px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 9px;
+    direction: ltr;
+
+    background-color: #FFFFFF;
+    color: #7D73BE;
+
+
+    font-size: 18px;
+}
+#name{
+    margin-left: 5px;
+    color: #4D4D4D;
+}
+.head-admin{
+    display: flex;
+    justify-content: space-between;
+    max-width: 580px;
+    height: 20px;
+    margin-bottom: 5px;
+}
+/*#date-user{*/
+/*    margin-right: 20px;*/
+/*}*/
+.head-user{
+    display: flex;
+    justify-content: space-between;
+    height: 20px;
+    margin-bottom: 5px;
+}
+.chat__message-user{
+    min-width: 150px;
+    min-height: 45px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 9px;
+    direction: ltr;
+    word-break: break-all;
+    background-color: #7D73BE;
+    color: #FFFFFF;
+
+    font-size: 18px;
+}
+.text{
+    padding: 10px 20px;
+    margin: 0;
+}
+.chat__form{
+    width: 100%;
+    margin-top: 5px;
+    padding: 0;
+}
+.chat > .row{
+    margin: 0;
+    padding: 0;
+}
+.chat_main{
+    width: 100%;
+    display: flex;
+}
+.chat_main > .field-text-form{
+    width: 100%;
+}
+#text-form{
+    background: url("../Mask group.svg") no-repeat 99%;
+    height: 59px;
+    border: 0;
+    padding: 0 48px 0 15px;
+    background-color: #FFFFFF;
+
+    font-size: 18px;
+}
+#text-form::placeholder{
+    color: #E1E1E1;
+}
+.myBtn{
+    width: 40px;
+    margin-left: -50px;
+    opacity: 0;
+}
+.text-admin-div{
+    margin: 10px 0;
+}
+.text-admin-container{
+    display: flex;
+    flex-direction: column;
+}
+.text-admin{
+    background-color: #FFFFFF;
+    color: #7D73BE;
+
+    border-radius: 9px;
+    direction: ltr;
+    height: fit-content;
+    width: fit-content;
+    max-width: 70%;
+    word-break: break-all;
+    padding: 15px;
+    font-size: 18px;
+    hyphens: auto;
+}
+.text-user-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.text-user-div{
+    margin: 10px 0;
+}
+.text-user{
+    background-color: #7D73BE;
+    color: #FFFFFF;
+
+    border-radius: 9px;
+    direction: ltr;
+    height: fit-content;
+    width: fit-content;
+    max-width: 70%;
+    word-break: break-all;
+    padding: 15px;
+    font-size: 18px;
+    hyphens: auto;
+}
