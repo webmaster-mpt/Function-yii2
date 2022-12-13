@@ -50,6 +50,7 @@ AppAsset::register($this);
 //        $menuItems[] = ['label' => 'Чат', 'url' => ['/chat/my-chat','userGet_id' => Yii::$app->user->id]];
 //        $menuItems[] = ['label' => 'Msg', 'url' => ['/msg']];
         $menuItems[] = ['label' => 'Поддержка', 'url' => ['/helper/index']];
+        $menuItems[] = ['label' => 'Словарь', 'url' => ['/dictionary/index']];
 
     }
     if(Yii::$app->user->getIdentity()->isModer()){
