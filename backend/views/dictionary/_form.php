@@ -18,6 +18,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'transcription')->input('text') ?>
 
+    <?= $form->field($model, 'type')->dropDownList([
+            'wort' => 'wort',
+            'bieten' => 'bieten'
+    ]) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>

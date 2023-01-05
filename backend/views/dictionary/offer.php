@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\DictionarySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Слова';
+$this->title = 'Предложения';
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <div class="dictionary-index">
@@ -18,8 +18,7 @@ $this->title = 'Слова';
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::button('Добавить новое слово', ['class' => 'btn btn-primary', 'data-toggle' => 'collapse', 'data-target' => '#collapseExample']) ?>
-        <?= Html::a('Предложения', ['offer'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::button('Добавить новое предложение', ['class' => 'btn btn-primary', 'data-toggle' => 'collapse', 'data-target' => '#collapseExample']) ?>
         <?= Html::a('Назад к админке', ['index'], ['class' => 'btn btn-danger']) ?>
     </p>
 
@@ -34,7 +33,6 @@ $this->title = 'Слова';
         <?php foreach ($rows as $row) { ?>
             <div class="card border-success" style="max-width: 16rem; width: 100%; margin: 0 15px 15px 0">
                 <div class="card-header bg-transparent border-success">
-                    <?= $row->russian ?>
                     <div class="float-right">
                         <button class="voice-btn border-0" style="background-color: #fff; color: #DAD9E3"><i class="fas fa-volume-up"></i></button>
                         <a href="/dictionary/view?id=<?= $row->id ?>" title="Просмотр" aria-label="Просмотр" data-pjax="0">
@@ -47,7 +45,7 @@ $this->title = 'Слова';
                             </svg>
                         </a>
                         <a href="/dictionary/update?id=<?= $row->id ?>" title="Редактировать" aria-label="Редактировать"
-                                data-pjax="0">
+                           data-pjax="0">
                             <svg aria-hidden="true"
                                  style="display:inline-block;color: #DAD9E3;font-size:inherit;height:1em;overflow:visible;vertical-align:-.125em;width:1em"
                                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -57,7 +55,7 @@ $this->title = 'Слова';
                             </svg>
                         </a>
                         <a href="/dictionary/delete?id=<?= $row->id ?>" title="Удалить" aria-label="Удалить" data-pjax="0"
-                                data-confirm="Вы уверены, что хотите удалить этот элемент?" data-method="post">
+                           data-confirm="Вы уверены, что хотите удалить этот элемент?" data-method="post">
                             <svg aria-hidden="true"
                                  style="display:inline-block;color: #DAD9E3;font-size:inherit;height:1em;overflow:visible;vertical-align:-.125em;width:.875em"
                                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -71,7 +69,7 @@ $this->title = 'Слова';
                 <div class="card-body text-success">
                     <h5 class="card-title m-0"><?= $row->deutch ?></h5>
                 </div>
-                <div class="card-footer bg-transparent border-success">[ <?= $row->transcription ?> ]</div>
+                <div class="card-footer bg-transparent border-success"><?= $row->russian ?></div>
             </div>
         <?php } ?>
     </div>

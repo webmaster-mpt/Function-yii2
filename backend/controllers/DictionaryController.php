@@ -90,7 +90,8 @@ class DictionaryController extends Controller
     public function actionShow()
     {
         $model = new Dictionary();
-        $rows = Dictionary::find()->all();
+        $rows = Dictionary::find()->where(['type' => 'wort'])->all();
+
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['show']);
@@ -100,6 +101,25 @@ class DictionaryController extends Controller
         }
 
         return $this->render('show', [
+            'model' => $model,
+            'rows' => $rows
+        ]);
+    }
+
+    public function actionOffer()
+    {
+        $model = new Dictionary();
+        $rows = Dictionary::find()->where(['type' => 'bieten'])->all();
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['offer']);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('offer', [
             'model' => $model,
             'rows' => $rows
         ]);

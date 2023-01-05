@@ -16,6 +16,7 @@ $this->title = $model->deutch . ($model->russian);
     <p>
         <?= Html::a('Изменить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Учить', ['show'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Предложения', ['offer'], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Добавить новое слово', ['create'], ['class' => 'btn btn-danger']) ?>
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',

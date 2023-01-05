@@ -40,5 +40,6 @@ $this->title = 'Словарь';
     <p>
         <?= Html::a('Добавить новое слово', ['create'], ['class' => 'btn btn-danger']) ?>
         <?= Html::a('Учить', ['show'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Предложения', ['offer'], ['class' => 'btn btn-primary']) ?>
     </p>
 </div>
