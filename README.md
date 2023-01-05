@@ -11,7 +11,8 @@
 * Сортировка (на стадии оптимизации/переделываю)
 * Экспорт (на стадии оптимизации/переделываю)
 * Свой чат. Чат пользователя с администрацией сайта
-* Словарь с карточками немецкого языка(с озвучкой).
+* Словарь с карточками немецкого языка(с озвучкой)
+* Информационная система продажи недвижимости(Aboba Beta).
 
 Далее идут диаграммы базы данных:
 
@@ -30,3 +31,7 @@ User && Profile(Frontend) && CommentsToProfile(Frontend) && Chat(Backend)
 Dictionary
 
 ![image](https://user-images.githubusercontent.com/74964601/207327629-51d307b3-ecc5-4d79-8e13-6ffaf603e267.png)
+
+Aboba(Realty Sale)
+
+![image](https://user-images.githubusercontent.com/74964601/210760349-7f4b18d6-5a57-4de6-a3bf-a4f16880785f.png)
