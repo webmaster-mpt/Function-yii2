@@ -20,7 +20,7 @@ use backend\models\Realty;
 
     <?= $form->field($model, 'sname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'age')->textInput() ?>
+    <?= $form->field($model, 'age')->input('number') ?>
     <?= $form->field($model, 'status_id')->dropDownList(Status::find()->select(['name','id'])->indexBy('id')->column(),['prompt'=>'']) ?>
 
     <?= $form->field($model, 'date_birthday')->textInput(['type'=>'date']) ?>

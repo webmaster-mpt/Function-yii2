@@ -15,6 +15,7 @@ use Yii;
  * @property int $status_id
  * @property string $date_birthday
  * @property int $realty_id
+ * @property int $uniq_id
  *
  * @property Realty $realty
  * @property Status $status
@@ -35,8 +36,8 @@ class Aboba extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fname', 'name', 'age', 'status_id', 'date_birthday', 'realty_id'], 'required'],
-            [['age', 'status_id', 'realty_id'], 'integer'],
+//            [['fname', 'name', 'age', 'status_id', 'date_birthday', 'realty_id'], 'required'],
+            [['age', 'status_id', 'realty_id','uniq_id'], 'integer'],
             [['date_birthday'], 'safe'],
             [['fname', 'name', 'sname'], 'string', 'max' => 255],
             [['realty_id'], 'exist', 'skipOnError' => true, 'targetClass' => Realty::className(), 'targetAttribute' => ['realty_id' => 'id']],
@@ -51,13 +52,14 @@ class Aboba extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'fname' => 'Fname',
-            'name' => 'Name',
-            'sname' => 'Sname',
-            'age' => 'Age',
-            'status_id' => 'Status ID',
-            'date_birthday' => 'Date Birthday',
-            'realty_id' => 'Realty ID',
+            'fname' => 'Фамилия',
+            'name' => 'Имя',
+            'sname' => 'Отчество',
+            'age' => 'Возраст',
+            'status_id' => 'Статус',
+            'date_birthday' => 'Дата рождения',
+            'realty_id' => 'Недвижимость',
+            'uniq_id' => 'Уникальное значение',
         ];
     }
 

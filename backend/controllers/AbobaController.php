@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\Aboba;
 use backend\models\AbobaSearch;
+use yii\db\ActiveRecord;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -43,6 +44,56 @@ class AbobaController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public static function handleTableForm($parent_model_id, $class, $linkFieldName, $parts): array {
+        if (!$class) return $parts;
+
+        $reflectionObject = new \ReflectionClass($class);
+        /** @var ActiveRecord $instance */
+        $instance = $reflectionObject->newInstanceWithoutConstructor();
+
+        $post = \Yii::$app->request->post();
+        if ($post) {
+            if (isset($post["delete_$class"])) {
+                foreach ($parts as $index => $part) {
+                    if ($part->id == $post["delete_$class"]) {
+                        $part->delete();
+                        unset($parts[$index]);
+                    }
+                }
+            }
+            if (isset($post["clear_$class"])) {
+                foreach ($parts as $part) {
+                    $part->delete();
+                }
+                $parts = [];
+            } else if (isset($post["create_$class"])) {
+                $newModel = new $class();
+                $newModel->$linkFieldName = $parent_model_id;
+                $newModel->save();
+                $parts[$newModel->id] = $newModel;
+            }
+
+            if ($instance->loadMultiple($parts, $post) && $instance->validateMultiple($parts)) {
+                foreach ($parts as $bacSeed) {
+                    $bacSeed->save(false);
+                }
+            }
+        }
+        return $parts;
+    }
+
+    public function actionNewCreate($uniq_id){
+        $abobaParts = Aboba::find()->where(['uniq_id' => $uniq_id])->indexBy('id')->all();
+        $abobaParts = self::handleTableForm($uniq_id, Aboba::class, 'uniq_id', $abobaParts);
+
+        $model = Aboba::find(['uniq_id' => $uniq_id]) ?? new Aboba();
+
+        return $this->render('new_create', [
+            'abobaParts' => $abobaParts,
+            'model' => $model
         ]);
     }
 

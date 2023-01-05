@@ -9,7 +9,6 @@ use yii\helpers\ArrayHelper;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Abobas';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="aboba-index">
 
@@ -42,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Добавить', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('New create', ['new_create', 'uniq_id' => 1], ['class' => 'btn btn-light']) ?>
     </p>
 
 </div>

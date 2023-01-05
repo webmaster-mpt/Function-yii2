@@ -97,7 +97,33 @@ class AbobaSearch extends Aboba
         return $dataProvider;
     }
 
-    public function searchRooms($params)
+    public function searchSale($params)
+    {
+        $query = Aboba::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'status_id' => '2',
+        ]);
+
+        return $dataProvider;
+    }
+
+    public function searchRoom($params)
     {
         $query = Aboba::find();
 
@@ -123,7 +149,7 @@ class AbobaSearch extends Aboba
         return $dataProvider;
     }
 
-    public function searchHomes($params)
+    public function searchHome($params)
     {
         $query = Aboba::find();
 
