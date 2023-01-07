@@ -125,6 +125,15 @@ class DictionaryController extends Controller
         ]);
     }
 
+    public function actionTranslate()
+    {
+        $model = new Dictionary();
+
+        return $this->render('translate', [
+            'model' => $model
+        ]);
+    }
+
     /**
      * Updates an existing Dictionary model.
      * If update is successful, the browser will be redirected to the 'view' page.

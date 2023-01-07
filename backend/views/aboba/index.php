@@ -41,7 +41,7 @@ $this->title = 'Abobas';
 
     <p>
         <?= Html::a('Добавить', ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('New create', ['new_create', 'uniq_id' => 1], ['class' => 'btn btn-light']) ?>
+        <?= Html::a('New create', ['new-create', 'uniq_id' => 1], ['class' => 'btn btn-light']) ?>
     </p>
 
 </div>

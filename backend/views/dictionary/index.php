@@ -16,6 +16,12 @@ $this->title = 'Словарь';
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <p>
+        <?= Html::a('Добавить новое слово', ['create'], ['class' => 'btn btn-danger']) ?>
+        <?= Html::a('Учить', ['show'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Предложения', ['offer'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Переводчик', ['translate'], ['class' => 'btn btn-primary']) ?>
+    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -37,9 +43,5 @@ $this->title = 'Словарь';
         ],
     ]); ?>
 
-    <p>
-        <?= Html::a('Добавить новое слово', ['create'], ['class' => 'btn btn-danger']) ?>
-        <?= Html::a('Учить', ['show'], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Предложения', ['offer'], ['class' => 'btn btn-primary']) ?>
-    </p>
+
 </div>

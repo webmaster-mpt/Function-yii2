@@ -28,19 +28,19 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error','logout'],
+                        'actions' => ['login', 'error', 'logout'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => [ 'index'],
+                        'actions' => ['index'],
                         'allow' => true,
                         'roles' => ['?'],
-                        'denyCallback' => function($rule, $action) {
+                        'denyCallback' => function ($rule, $action) {
                             return $this->redirect(Url::toRoute(['/site/login']));
                         }
                     ],
                     [
-                        'actions' => [ 'index','filter-code-buyer','filter-code-rooms','filter-code-homes'],
+                        'actions' => ['index', 'filter-code-buyer', 'filter-code-rooms', 'filter-code-homes'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -86,43 +86,12 @@ class SiteController extends Controller
         }
         $abobaSearchModel = new AbobaSearch();
         $abobaDataProvider = $abobaSearchModel->search($this->request->queryParams);
-
         return $this->render('index', [
-            'users'=>$users,
-            'abobaSearchModel'=>$abobaSearchModel,
-            'abobaDataProvider' =>$abobaDataProvider
+            'users' => $users,
+            'abobaSearchModel' => $abobaSearchModel,
+            'abobaDataProvider' => $abobaDataProvider
         ]);
     }
-
-//    public function actionFilterCodeBuyer()
-//    {
-//        $abobaSearchModel = new AbobaSearch();
-//        $abobaDataProvider = $abobaSearchModel->searchBuyer($this->request->queryParams);
-//        return $this->render('FilterCodeBuyer', [
-//            'abobaSearchModel'=>$abobaSearchModel,
-//            'abobaDataProvider' =>$abobaDataProvider
-//        ]);
-//    }
-//
-//    public function actionFilterCodeHomes()
-//    {
-//        $abobaSearchModel = new AbobaSearch();
-//        $abobaDataProvider = $abobaSearchModel->searchHomes($this->request->queryParams);
-//        return $this->render('FilterCodeHomes', [
-//            'abobaSearchModel'=>$abobaSearchModel,
-//            'abobaDataProvider' =>$abobaDataProvider
-//        ]);
-//    }
-//
-//    public function actionFilterCodeRooms()
-//    {
-//        $abobaSearchModel = new AbobaSearch();
-//        $abobaDataProvider = $abobaSearchModel->searchRooms($this->request->queryParams);
-//        return $this->render('FilterCodeRooms', [
-//            'abobaSearchModel'=>$abobaSearchModel,
-//            'abobaDataProvider' =>$abobaDataProvider
-//        ]);
-//    }
 
     /**
      * Login action.

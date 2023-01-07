@@ -14,8 +14,10 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/chat.css',
+        'css/translate.css',
     ];
     public $js = [
+        'js/translate.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
