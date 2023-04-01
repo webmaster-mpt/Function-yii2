@@ -1,4 +1,4 @@
-Проект изначально был для тестового задания, но в дальнейшем решил использовать для реализации разных идей и изучения нового функционала yii2.
+Проект изначально был для тестового задания, но в дальнейшем решил использовать для реализации разных идей и изучения нового функционала yii2. <a href="#english"> English V.</a> <br>
 Функционал:
 * Авторизация/Регистрация разделена на backend/frontend;
 * RBAC - разделение ролей для пользователей. На данный момент список ролей:
@@ -14,7 +14,7 @@
 * Словарь с карточками немецкого языка(с озвучкой) можно выучить как и отдельные слова так и целые предложения, Переводчик с немецкого на русский
 * Информационная система продажи недвижимости(Aboba Beta).
 
-Далее идут диаграммы базы данных:
+Далее идут диаграммы базы данных/Then there are database diagrams::
 
 DepDrop(Backend)
 
@@ -35,3 +35,23 @@ Dictionary
 Aboba(Realty Sale)
 
 ![image](https://user-images.githubusercontent.com/74964601/210760349-7f4b18d6-5a57-4de6-a3bf-a4f16880785f.png)
+
+
+<div id="english">The project was originally for a test assignment, but later decided to use it to implement different ideas and learn new functionality of yii2.</div>
+Functionality:
+<ul>
+ <li>Authorization/Registration is split into backend/frontend;</li>
+ <li>RBAC - the division of roles for users. At the moment, the list of roles: </li>
+ <ul>
+  <li>admin</li>
+  <li>moder</li>
+  <li>user</li>
+</ul>
+ <li>Administrator can automatically log in as any normal user;</li>
+ <li>DepDrop by kartik;</li>
+ <li>Profile + Comments functionality;</li>
+ <li>Sorting (under optimization / redoing);</li>
+ <li>Exporting (under optimization/Reprocessing);</li>
+ <li>Own chat. Chat with site administrators;</li>
+ <li>Dictionary with German cards (with voice-over) you can learn individual words and sentences, Translator from German into Russian;</li>
+ <li>Real Estate Information System (Aboba Beta);</li>
